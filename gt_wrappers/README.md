@@ -1,13 +1,21 @@
 
-## In progress!!
+## Ground-Truth Wrappers
+Code to homogenize the access to the different object ground trtuh datasets (COCO, Pascal, SBD).
 
-point db_root_dir to the DBs
+### Usage
+- Point `db_root_dir.m` to the folder where each database is stored in your system.
+- For COCO, download and compile `coco_api` in the same folder than the COCO dataset.
+- Test by running `demo.m` or `demo_script.m`.
 
-coco_api in db_root_dir('COCO')
+### Current compatibility
+- COCO, Pascal, SBD, both to read images and ground truth.
+- ILSVRC only to read images.
 
-
-To create a gt_sets file:
-
-
+### Note
+The code reads the different ground-truth subsets (train, test, etc.) from a file in `gt_sets`.
+The majority of sets are already created, but if you need one not in `gt_sets` either ask me to add it or create it yourself using the following commands:
+```
 ls image_folder > tmp.txt
 sed -e 's/.jpg//g' -i tmp.txt > gt_set_ids.txt
+```
+Where you should change the `.jpg` by the images extension (`.JPEG` in ILSVRC for example).
