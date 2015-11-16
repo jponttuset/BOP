@@ -5,6 +5,11 @@ In-depth analysis of the state-of-the-art in Object Proposals<br>and the challen
 Boosting Object Proposals: From Pascal to COCO<br>
 *International Conference on Computer Vision (ICCV) 2015*
 
+Please visit the following site to browse the results:<br>
+[http://www.vision.ee.ethz.ch/~biwiproposals/boosting-coco/](http://www.vision.ee.ethz.ch/~biwiproposals/boosting-coco/)
 
+## Contents<br>
+- Ground-truth wrappers to homogenize access to Pascal, COCO, and SBD in `gt_wrappers/` (See `gt_wrappers/README.txt`)
+- Pre-computed evaluation to reproduce the paper results in `data/`
 
-Code coming soon.
+More code coming soon (before ICCV2015).
