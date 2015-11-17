@@ -1,2 +1,0 @@
-ncands	abo	average_recall	rec_at_0.5	rec_at_0.7	rec_at_0.85
-998.361258	0.565063	0.324855	0.650209	0.417973	0.170324
