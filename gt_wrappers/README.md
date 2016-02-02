@@ -8,7 +8,7 @@ Code to homogenize the access to the different object ground trtuh datasets (COC
 - Test by running `demo.m` or `demo_script.m`.
 
 ### Current compatibility
-- COCO, Pascal, SBD, both to read images and ground truth.
+- COCO, Pascal, SBD, BSDS500, both to read images and ground truth.
 - ILSVRC only to read images.
 
 ### Note

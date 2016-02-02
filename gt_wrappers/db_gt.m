@@ -11,7 +11,7 @@
 %    International Conference on Computer Vision (ICCV) 2015.
 % Please consider citing the paper if you use this code.
 % ------------------------------------------------------------------------
-function ground_truth = db_gt( database, image_id )
+function [ground_truth, gt_set, im, anns] = db_gt( database, image_id )
 
     if strcmp(database,'Pascal') 
         % Load Object and Class ground truth
@@ -139,7 +139,15 @@ function ground_truth = db_gt( database, image_id )
         
         % Valid pixels (to make it compatible with SBD and Pascal)
         ground_truth.valid_pixels = (gt_object<255);
+    elseif strcmp(database,'BSDS500')
+        % Load GT in the original format
+        gt = loadvar(fullfile(db_root_dir(database), 'groundTruth.original', [image_id '.mat']),'groundTruth');
         
+        % Store it as cell of partitions
+        ground_truth = cell(1,length(gt));
+        for jj=1:length(gt)
+            ground_truth{jj} = uint32(gt{jj}.Segmentation);
+        end
     else
         error(['Ground truth not implemented for: ' database]);
     end

@@ -12,13 +12,15 @@
 % Please consider citing the paper if you use this code.
 % ------------------------------------------------------------------------
 
+%% Add paths
+addpath(genpath(gt_wrappers_root));
+
 %% Get all image IDs from a certain dataset
-database = 'COCO';
-gt_set   = 'train2014';
-% database = 'Pascal';
-% gt_set   = 'Segmentation_train_2012';
-% database = 'SBD';
-% gt_set   = 'train';
+% database = 'COCO';   gt_set   = 'train2014';
+% database = 'Pascal'; gt_set   = 'Segmentation_train_2012';
+% database = 'SBD';    gt_set   = 'train';
+database = 'BSDS500';    gt_set   = 'train';
+
 sel_id   = 2;
 
 % Read image IDs
@@ -38,9 +40,19 @@ imshow(im)
 %% Load a ground-truth annotation (first time in COCO takes longer)
 gt = db_gt(database,im_ids{sel_id});
 
-for ii=1:min(3,length(gt.masks))
-    subplot(2,2,1+ii);
-    imshow(gt.masks{ii})
+if isfield(gt,'masks') % Object ground truth
+    for ii=1:min(3,length(gt.masks))
+        subplot(2,2,1+ii);
+        imshow(gt.masks{ii})
+    end
+elseif iscell(gt)
+    for ii=1:min(3,length(gt))
+        subplot(2,2,1+ii);
+
+        imshow(label2rgb(gt{ii},'jet', 'k', 'shuffle'))
+    end
+else
+    error('Unknown format');
 end
 
 

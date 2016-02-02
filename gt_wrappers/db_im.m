@@ -15,7 +15,7 @@ function image = db_im( database, image_id )
     if strcmp(database,'Pascal')
         image = imread(fullfile(db_root_dir(database), 'JPEGImages', [image_id '.jpg']));
     elseif strcmp(database,'BSDS500')
-        image = imread(fullfile(db_root_dir(database), 'images', [image_id '.jpg']));
+        image = imread(fullfile(db_root_dir(database), 'images', 'all', [image_id '.jpg']));
     elseif strcmp(database,'SBD')
         image = imread(fullfile(db_root_dir(database), 'img', [image_id '.jpg']));
     elseif strcmp(database,'COCO')

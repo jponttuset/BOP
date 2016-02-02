@@ -13,6 +13,9 @@
 % ------------------------------------------------------------------------
 function ids = db_ids( database, gt_set )
     index_file = fullfile(gt_wrappers_root, 'gt_sets', database, [gt_set '.txt']);
+    if ~exist(index_file,'file')
+        error(['File ''' index_file ''' not found... Check the README'])
+    end
     fileID = fopen(index_file);
     ids = textscan(fileID, '%s');
     ids = ids{1};
