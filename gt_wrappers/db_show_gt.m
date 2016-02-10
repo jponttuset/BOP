@@ -30,6 +30,16 @@ function show_gt = db_show_gt(database, image_id)
         show_gt = cdata;
         
         close(h);
+    elseif strcmp(database,'BSDS500')
+        % Load the ground truth and extra info
+        gt = db_gt( database, image_id );
+        
+        % Overlay all contours on one
+        show_gt = zeros(size(gt{1}));
+        for ii=1:length(gt)
+            show_gt = show_gt + seg2bmap(gt{ii});
+        end
+        show_gt = uint8(255*(1-show_gt/max(show_gt(:))));
     else
         error(['Not implemented for ' database])
     end
