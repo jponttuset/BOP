@@ -12,4 +12,5 @@ Please visit the following site to browse the results:<br>
 - Ground-truth wrappers to homogenize access to Pascal, COCO, and SBD in `gt_wrappers/` (See `gt_wrappers/README.txt`)
 - Pre-computed evaluation to reproduce the paper results in `data/`
 
-More code coming soon (before ICCV2015).
+## Benchmark of Object Proposals<br>
+The comparison of object proposal techniques, is performed using the MCG benchmark code, which is now updated to show the measures used in this paper. Check it [here](https://github.com/jponttuset/mcg) to evaluate your own proposals.
