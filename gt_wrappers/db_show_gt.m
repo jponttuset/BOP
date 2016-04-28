@@ -30,8 +30,26 @@ function show_gt = db_show_gt(database, image_id)
         show_gt = cdata;
         
         close(h);
+    elseif strcmp(database,'Pascal')
+        % Load the ground truth
+        gt = db_gt( database, image_id );
+        
+        % Get single image GT
+        gt2 = zeros(size(gt.masks{1}));
+        for ii=1:length(gt.masks)
+            gt2(gt.masks{ii}) = gt.category(ii);
+        end
+        
+        % Add void
+        gt2(~gt.valid_pixels) = 255;
+        
+        % Get colormap
+        cmap = pascal_colormap();
+        
+        % Get RGB image
+        show_gt = ind2rgb(uint8(gt2),cmap);
     elseif strcmp(database,'BSDS500')
-        % Load the ground truth and extra info
+        % Load the ground truth
         gt = db_gt( database, image_id );
         
         % Overlay all contours on one
